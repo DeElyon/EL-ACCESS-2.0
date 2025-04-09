@@ -1,0 +1,76 @@
+/* Base Theme Styles */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+}
+
+/* Light Theme */
+body.light-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #1e90ff;
+    --secondary-color: #a9a9a9;
+}
+
+/* Apply Theme Variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.secondary {
+    background-color: var(--secondary-color);
+}
+
+/* Example Usage */
+/* High Contrast Theme */
+body.high-contrast-theme {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #ffff00;
+    --secondary-color: #00ff00;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-color);
+}
+
+/* Theme Transition */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

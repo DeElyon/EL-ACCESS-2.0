@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course 2 Quiz - Sustainable Development</title>
+</head>
+<body>
+    <h1>Quiz: Sustainable Development</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. Which of the following best describes sustainable development?</p>
+            <input type="radio" name="q1" value="a"> Development that meets current needs without compromising future generations<br>
+            <input type="radio" name="q1" value="b"> Rapid economic growth at any cost<br>
+            <input type="radio" name="q1" value="c"> Focusing only on environmental protection<br>
+        </div>
+
+        <div class="question">
+            <p>2. What are the three pillars of sustainability?</p>
+            <input type="radio" name="q2" value="a"> Money, Power, Resources<br>
+            <input type="radio" name="q2" value="b"> Environment, Economy, Social<br>
+            <input type="radio" name="q2" value="c"> Water, Air, Land<br>
+        </div>
+
+        <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function gradeQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "b"
+            };
+            
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            for (let question in answers) {
+                let selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            const percentage = (score / total) * 100;
+            document.getElementById("result").innerHTML = `Your score: ${score}/${total} (${percentage}%)`;
+        }
+    </script>
+</body>
+</html>

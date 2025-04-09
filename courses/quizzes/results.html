@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+</head>
+<body>
+    <h1>Your Quiz Results</h1>
+    
+    <div>
+        <h2>Score Summary</h2>
+        <p>Total Score: <span id="totalScore">85%</span></p>
+        <p>Correct Answers: <span id="correctAnswers">17/20</span></p>
+        <p>Time Taken: <span id="timeTaken">15 minutes</span></p>
+    </div>
+
+    <div>
+        <h2>Question Review</h2>
+        <div id="questionList">
+            <!-- Questions will be dynamically populated -->
+        </div>
+    </div>
+
+    <div>
+        <h2>Recommendations for Improvement</h2>
+        <ul id="recommendationList">
+            <!-- Recommendations will be dynamically populated -->
+        </ul>
+    </div>
+
+    <script>
+        const quizResults = {
+            questions: [
+                {
+                    question: "What is HTML?",
+                    userAnswer: "Hypertext Markup Language",
+                    correctAnswer: "Hypertext Markup Language",
+                    isCorrect: true
+                },
+                {
+                    question: "What does CSS stand for?",
+                    userAnswer: "Cascading Sheet Style",
+                    correctAnswer: "Cascading Style Sheets",
+                    isCorrect: false
+                },
+                {
+                    question: "What is JavaScript?",
+                    userAnswer: "A programming language",
+                    correctAnswer: "A programming language",
+                    isCorrect: true
+                }
+            ],
+            recommendations: [
+                "Review CSS terminology and concepts",
+                "Practice more front-end development exercises",
+                "Focus on web development fundamentals",
+                "Try building small projects to reinforce learning"
+            ]
+        };
+
+        const questionList = document.getElementById('questionList');
+        quizResults.questions.forEach((q, index) => {
+            questionList.innerHTML += `
+                <div>
+                    <p><strong>Question ${index + 1}:</strong> ${q.question}</p>
+                    <p>Your Answer: ${q.userAnswer}</p>
+                    <p>Correct Answer: ${q.correctAnswer}</p>
+                    <p>Status: ${q.isCorrect ? 'Correct' : 'Incorrect'}</p>
+                </div>
+                <hr>
+            `;
+        });
+
+        const recommendationList = document.getElementById('recommendationList');
+        quizResults.recommendations.forEach(rec => {
+            recommendationList.innerHTML += `<li>${rec}</li>`;
+        });
+    </script>
+</body>
+</html>

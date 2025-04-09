@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - E-Learning Access</title>
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .faq-section {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            background-color: #f1f1f1;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 2px;
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0 0 5px 5px;
+        }
+        .faq-question:hover {
+            background-color: #e0e0e0;
+        }
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-section">
+            <h2>Account Management</h2>
+            <div class="faq-question">How do I reset my password?</div>
+            <div class="faq-answer">Click on the "Forgot Password" link on the login page and follow the instructions sent to your email.</div>
+
+            <div class="faq-question">How can I update my profile information?</div>
+            <div class="faq-answer">Log in to your account, click on your profile icon, and select "Edit Profile" to update your information.</div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Courses</h2>
+            <div class="faq-question">How do I access my enrolled courses?</div>
+            <div class="faq-answer">After logging in, click on "My Courses" in the navigation menu to see all your enrolled courses.</div>
+
+            <div class="faq-question">Can I download course materials for offline viewing?</div>
+            <div class="faq-answer">Yes, most course materials can be downloaded for offline viewing. Look for the download icon next to the content.</div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Payments</h2>
+            <div class="faq-question">What payment methods do you accept?</div>
+            <div class="faq-answer">We accept all major credit cards, PayPal, and bank transfers for course payments.</div>
+
+            <div class="faq-question">How do I request a refund?</div>
+            <div class="faq-answer">Contact our support team within 30 days of purchase to request a refund. Terms and conditions apply.</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                question.classList.toggle('active');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <div class="login-container">
+        <form id="loginForm" action="auth.php" method="POST" onsubmit="return validateForm()"></form>
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <span class="password-toggle" onclick="togglePassword()">👁️</span>
+            </div>
+            <div class="form-links">
+                <a href="forgot-password.php">Forgot Password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = '';
+
+            if (!email || !password) {
+                errorDiv.textContent = 'All fields are required';
+                return false;
+            }
+
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                errorDiv.textContent = 'Please enter a valid email address';
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters long';
+                return false;
+            }
+
+            return true;
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>

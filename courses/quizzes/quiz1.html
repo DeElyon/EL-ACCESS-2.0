@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course 1 Quiz</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Course 1 Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. What is accessibility in web design?</p>
+                <input type="radio" name="q1" value="a"> Making websites look attractive<br>
+                <input type="radio" name="q1" value="b"> Making content available to people with disabilities<br>
+                <input type="radio" name="q1" value="c"> Making websites load faster<br>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <div class="question">
+                <p>2. Which of these is an important accessibility feature?</p>
+                <input type="radio" name="q2" value="a"> Alt text for images<br>
+                <input type="radio" name="q2" value="b"> Fancy animations<br>
+                <input type="radio" name="q2" value="c"> Background music<br>
+                <div class="feedback" id="feedback2"></div>
+            </div>
+
+            <div class="question">
+                <p>3. Why is color contrast important for accessibility?</p>
+                <input type="radio" name="q3" value="a"> It makes the website more colorful<br>
+                <input type="radio" name="q3" value="b"> It helps users with visual impairments read content<br>
+                <input type="radio" name="q3" value="c"> It saves bandwidth<br>
+                <div class="feedback" id="feedback3"></div>
+            </div>
+
+            <div class="question">
+                <p>4. What is ARIA in web accessibility?</p>
+                <input type="radio" name="q4" value="a"> A type of web browser<br>
+                <input type="radio" name="q4" value="b"> A musical term<br>
+                <input type="radio" name="q4" value="c"> Accessible Rich Internet Applications<br>
+                <div class="feedback" id="feedback4"></div>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+        </form>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: "b",
+                q2: "a",
+                q3: "b",
+                q4: "c"
+            };
+
+            let score = 0;
+
+            for (let question in correctAnswers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback${question.slice(1)}`);
+                
+                if (!selected) {
+                    feedbackDiv.textContent = "Please select an answer";
+                    feedbackDiv.className = "feedback incorrect";
+                    feedbackDiv.style.display = "block";
+                    continue;
+                }
+
+                if (selected.value === correctAnswers[question]) {
+                    score++;
+                    feedbackDiv.textContent = "Correct!";
+                    feedbackDiv.className = "feedback correct";
+                } else {
+                    feedbackDiv.textContent = "Incorrect. Try again!";
+                    feedbackDiv.className = "feedback incorrect";
+                }
+                feedbackDiv.style.display = "block";
+            }
+
+            alert(`Your score: ${score}/${Object.keys(correctAnswers).length}`);
+        }
+    </script>
+</body>
+</html>
