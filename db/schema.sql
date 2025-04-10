@@ -15,6 +15,15 @@ CREATE TABLE courses (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE notifications (
+    notification_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    message TEXT NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE quizzes (
     quiz_id SERIAL PRIMARY KEY,
     course_id INTEGER REFERENCES courses(course_id),
@@ -73,3 +82,7 @@ INSERT INTO user_progress (user_id, course_id, quiz_id, score) VALUES
 INSERT INTO subscriptions (user_id, expiry_date) VALUES
 (1, CURRENT_TIMESTAMP + INTERVAL '1 year'),
 (2, CURRENT_TIMESTAMP + INTERVAL '6 months');
+
+INSERT INTO notifications (user_id, message, type) VALUES
+(1, 'Welcome to the course!', 'welcome'),
+(2, 'New quiz available', 'quiz');
